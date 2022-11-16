@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Lista de Avisos</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+
+		<div>
+		
+		<h2 style="color: rgb(0, 0, 0)">Lista de Avisos</h2>
+		<p>*Si tiene problemas al eliminar un aviso es porque existen intereses de los estudiantes con este aviso<p>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Precio</th>
+							<th>Fecha</th>
+							<th>Habitacion</th>
+							<th>Operacion 1</th>
+							<th>Operacion 2</th>
+						</tr>
+					</thead>
+					<tbody id="avisos-list">
+						<tr th:each="av:${listaAviso}">
+							<td th:text="${av.idAviso}"></td>
+							<td th:text="${av.preHabitacion}"></td>
+							<td th:text="${#dates.format(av.fechaPublicacion,'dd/MM/yyyy')}"></td>
+							<td th:text="${av.room.descpRoom}"></td>
+							<td><a th:href="@{/aaviso/delete?id=}+${av.idAviso}">
+									Eliminar </a></td>
+
+							<td><a th:href="@{'/aaviso/goupdate/'+${av.idAviso}}">
+									Actualizar </a></td>
+
+						</tr>
+					</tbody>
+
+				</table>
+
+
+
+			</div>
+
+		</div>
+
+
+
+
+	</div>
+
+
+</body>
+</html>

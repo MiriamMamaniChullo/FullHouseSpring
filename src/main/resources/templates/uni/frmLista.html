@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+		<div><h2 style="color: #000000">Lista de Universidades</h2>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Universidad</th>
+							<th>Operación</th>
+							<th>Operación</th>
+						</tr>
+					</thead>
+					<tbody id="universidades-list">
+						<tr th:each="univ:${listaUniversidades}">
+							<td th:text="${univ.idUniversidad}"></td>
+							<td th:text="${univ.fullNameUniversidad}"></td>
+							<td><a
+								th:href="@{/university/delete?id=}+${univ.idUniversidad}">
+									Eliminar </a></td>
+
+							<td><a
+								th:href="@{'/university/goupdate/'+${univ.idUniversidad}}">
+									Actualizar </a></td>
+
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

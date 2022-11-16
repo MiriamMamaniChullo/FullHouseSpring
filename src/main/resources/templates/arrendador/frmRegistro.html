@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+		<h2 style="color: rgb(0, 0, 0)">Registro de Arrendador</h2>
+			<form th:action="@{/aarrendador/save}" method="post" th:object="${a}">
+				<div class="col-sm-12">
+					<label class="form-label" style="color: rgb(0, 0, 0)">Nombre de
+						Arrendador: </label> <input type="text" th:field="*{nomArrendador}"
+						class="form-control" required minlength="4" maxlength="18"></input>
+				</div>
+				</br>
+				<div class="col-sm-12">
+
+					<label class="form-label" style="color: rgb(0, 0, 0)">DNI del
+						Arrendador: </label> <input type="text" th:field="*{dniArrendador}"
+						class="form-control" required minlength="8" maxlength="8"></input>
+
+				</div>
+				</br>
+				<div class="col-sm-12">
+					<label class="form-label" style="color: rgb(0, 0, 0)">Edad de
+						Arrendador: </label> <input type="text" th:field="*{edadArrendador}"
+						class="form-control" required minlength="2" maxlength="3"></input>
+
+				</div>
+				</br>
+				<div class="col-sm-12">
+					<label class="form-label" style="color: rgb(0, 0, 0)">Celular de
+						Arrendador: </label> <input type="text" th:field="*{celArrendador}"
+						class="form-control" required minlength="9" maxlength="9"></input>
+				</div>
+				</br> </br>
+				<div class="col-sm-12">
+					<label class="form-label" style="color: rgb(0, 0, 0)">Email de
+						Arrendador: </label> <input type="text" th:field="*{emailArrendador}"
+						class="form-control" required minlength="15" maxlength="25"></input>
+
+				</div>
+				</br>
+				<div class="col-sm-12">
+					<label class="form-label" style="color: rgb(0, 0, 0)">Username:
+					</label> <input type="text" th:field="*{username}" class="form-control"
+						required minlength="6" maxlength="10"></input>
+				</div>
+				</br>
+				<div class="col-sm-12">
+					<label class="form-label" style="color: rgb(0, 0, 0)">Password:
+					</label> <input type="text" th:field="*{password}" class="form-control"
+						required minlength="5" maxlength="10"></input>
+				</div>
+				</br>
+				<div class="col-sm-12">
+					<input type="submit" value="Registrar" class="btn btn-dark"></input>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

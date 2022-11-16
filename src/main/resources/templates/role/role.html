@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head"></head>
+<meta charset="UTF-8"></meta>
+
+<body>
+
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<hr style="background-color: rgb(0, 0, 0)" />
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%;">Registro
+			de rol</div>
+		<hr style="background-color: rgb(255, 255, 255)" />
+		<div>
+			<form th:action="@{/roles/guardar}" th:object="${r}" method="post">
+				<div class="col-sm-12">
+					<label class="col-sm-2 col-form-label" style="color: rgb(0, 0, 0)">Usuario:
+					</label> <select class="form-control" th:field="*{usuario.id}">
+						<option th:each="u: ${listaUsuarios}" th:value="${u.id}"
+							th:text="${u.username}" th:selected="(${u.id} == *{usuario.id})"></option>
+					</select>
+				</div>
+				<label for="descripcion" class="col-sm-2 col-form-label" style="color: rgb(0, 0, 0)">Rol:
+				</label>
+				<div class="col-sm-12">
+					<select name="select" th:field="*{rol}" class="form-control">
+						<option value="ROLE_ADMIN" selected>Administrador</option>
+						<option value="ROLE_ESTUDIANTE">Estudiante</option>
+						<option value="ROLE_ARRENDADOR">Arrendador</option>
+
+					</select>
+				</div>
+				<hr style="background-color: #FDFDFD" />
+				<div class="form-group row">
+					<div class="col-sm-6">
+						<input type="submit" value="Registrar" class="btn btn-dark" /> <a
+							href="/roles/nuevo" class="btn btn-danger"><span>Cancelar</span></a>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+
+	<div th:if="${mensaje}" class="alert alert-info">
+		<p th:text="${mensaje}"></p>
+	</div>
+</body>
+</html>

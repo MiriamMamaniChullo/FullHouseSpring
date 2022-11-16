@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleag.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<body>
+
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+				<br>			
+				<br>
+		<div>
+			<div class="table-responsive">
+			<h1 align="center" style="color:#ffffff" >Reporte de arrendadores por habitaci&oacute;n registrada en cada distrito </h1>
+				<br>
+				<br>
+				<table class="table table-white">
+					<thead class="thead-dark" >
+						<tr align="center">
+							<th scope="col" style="color:#ffffff">Nombre del arrendador</th>
+							<th scope="col" style="color:#ffffff">Cantidad de Habitaciones</th>
+							<th scope="col" style="color:#ffffff">Distrito</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr align="center" th:each="r:${listaArrendadorDistrito}">
+							<td th:text="${r[0]}"></td>
+							<td th:text="${r[1]}"></td>
+							<td th:text="${r[2]}"></td>
+								
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

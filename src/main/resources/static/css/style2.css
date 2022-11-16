@@ -1,0 +1,21 @@
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu {
+		display: none;
+	}
+	.navbar .nav-item:hover .nav-link {
+		
+	}
+	.navbar .nav-item:hover .dropdown-menu {
+		display: block;
+	}
+	.navbar .nav-item .dropdown-menu {
+		margin-top: 0;
+	}
+}
+
+body {
+	background:
+		url("https://i.pinimg.com/originals/1a/b0/f7/1ab0f7dd569e58df4ef04ce71d3dac71.jpg");
+		background-size: 100%;
+		
+}

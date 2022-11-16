@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Lista intereses</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+		<h2 style="color: #000000">Lista de Intereses</h2>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nombre Estudiante</th>
+							<th>Nivel de inter&eacutes</th>
+							<th>Habitaci&oacuten</th>
+							<th>Operaci&oacuten</th>
+							<th>Operaci&oacuten</th>
+						</tr>
+					</thead>
+					<tbody id="intereses-list">
+						<tr th:each="int:${listaInteres}">
+							<td th:text="${int.idInteres}"></td>
+							<td th:text="${int.student.nombreStudent}"></td>
+							<td th:text="${int.medidaInteres}"></td>	
+							<td th:text="${int.aviso.room.descpRoom}"></td>				
+							<td>
+							<a th:href="@{/iinteres/delete?id=}+${int.idInteres}">Eliminar</a>
+							</td>
+							<td>
+							<a th:href="@{'/iinteres/goupdate/'+${int.idInteres}}">Modificar</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

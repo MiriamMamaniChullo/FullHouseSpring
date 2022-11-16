@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleag.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+				<br>			
+				<br>
+				<br>
+				<br>
+		<div>
+			<div class="table-responsive">
+			<h1 align="center" style="color:#ffffff" >Reporte de Fecha de registro seg&uacute;n mes de arrendadores  </h1>
+				<br>
+				<br>
+			
+				<table class="table table-white">
+					<thead class="thead-dark" >
+						<tr align="center">
+							<th scope="col" style="color:#000080">ID de habitaci&oacute;n</th>
+							<th scope="col" style="color:#000080">Fecha de Registro</th>
+							<th scope="col" style="color:#000080">Nombre de Arrendador</th>
+							
+						</tr>
+					</thead>
+					<tbody >
+						<tr align="center" th:each="ra:${listaArrendadorFecha}">
+							<td th:text="${ra[0]}" style="color:#000000"></td>
+							<td th:text="${ra[1]}" style="color:#000000"></td>
+							<td th:text="${ra[2]}" style="color:#000000"></td>
+								
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Lista intereses</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+							<th>Nombre Estudiante</th>
+							<th>Inter&eacutes del estudiante</th>
+							<th>Precio de habitaci&oacuten</th>
+						</tr>
+					</thead>
+					<tbody id="intereses-list">
+						<tr th:each="inte:${listaIntereses}">
+							<td th:text="${inte[0]}"></td>
+							<td th:text="${inte[1]}"></td>
+							<td th:text="${inte[2]}"></td>			
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

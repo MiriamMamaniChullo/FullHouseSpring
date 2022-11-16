@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+
+</head>
+<body>
+
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+		<h2 style="color: #000000">Registro de universidad</h2>
+			<form th:action="@{/university/save}" method="post" th:object="${u}">
+
+				<label class="form-label" style="color:rgb(0, 0, 0)">Nombre de
+					universidad:</label> <input type="text" th:field="*{fullNameUniversidad}"
+					class="form-control" required minlength="2" maxlength="40"></input>
+		</div>
+		<div class="col-sm-12">
+			<input type="submit" value="Registrar" class="btn btn-dark"></input>
+		</div>
+		</form>
+	</div>
+	</div>
+
+</body>
+</html>

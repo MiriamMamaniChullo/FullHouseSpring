@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title></title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+		<h2 style="color: rgb(0, 0, 0)">Lista de estudiantes</h2>
+		<p>*Si tiene problemas al eliminar su registro de estudiante es porque existen intereses registrados con su nombre<p>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Estudiante</th>
+							<th>DNI</th>
+							<th>Edad</th>
+							<th>N&uacutemero</th>
+							<th>Correo</th>
+							<th>Universidad</th>
+							<th>Operaci&oacuten</th>
+							<th>Operaci&oacuten</th>
+						</tr>
+					</thead>
+					<tbody id="estudiantes-list">
+						<tr th:each="stu:${listaEstudiantes}">
+							<td th:text="${stu.idStudent}"></td>
+							<td th:text="${stu.nombreStudent}"></td>
+							<td th:text="${stu.dniStudent}"></td>
+							<td th:text="${stu.edadStudent}"></td>
+							<td th:text="${stu.numStudent}"></td>
+							<td th:text="${stu.correoStudent}"></td>
+							<td th:text="${stu.universidad.fullNameUniversidad}"></td>	
+							<td>			
+							<a th:href="@{/sstudents/delete?id=}+${stu.idStudent}">Eliminar</a>
+							</td>
+							<td>
+							<a th:href="@{'/sstudents/goupdate/'+${stu.idStudent}}">Modificar</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

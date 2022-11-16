@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Registro Habitacion</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+		<h2 style="color: rgb(0, 0, 0)">Registro de Habitación</h2>
+			<form th:action="@{/rrooms/save}" method="post" th:object="${r}">
+
+				<div class="col-sm-12">
+					<label class="form-label" style="color: #000000">Descripcion:</label>
+					<input type="text" th:field="*{descpRoom}" class="form-control"
+						required minlength="10" maxlength="100" /> <small
+						th:errorclass="'form-control alert-danger'"
+						th:if="${#fields.hasErrors('descpRoom')}" th:errors="*{descpRoom}"></small>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label" style="color: #000000">Direccion:</label>
+					<input type="text" th:field="*{adress}" class="form-control"
+						required minlength="10" maxlength="40" /> <small
+						th:errorclass="'form-control alert-danger'"
+						th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}"></small>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label" style="color: #000000">Arrendador:</label>
+					<select name="selectArrendador" class="form-control"
+						th:field="*{arrendador.idArrendador}">
+						<option th:each="ar: ${listaArrendadores}"
+							th:value="${ar.idArrendador}" th:text="${ar.nomArrendador}"
+							th:selected="(${ar.idArrendador}==*{arrendador.idArrendador})" />
+					</select>
+				</div>
+				
+				<div class="col-sm-12">
+                    <label class="form-label" style="color: #000000">Distrito:</label>
+                    <select name="selectDistrict" class="form-control"
+                        th:field="*{distrito.idDistrict}">
+                        <option th:each="di: ${listaDistritos}"
+                            th:value="${di.idDistrict}" th:text="${di.nomDistrict}"
+                            th:selected="(${di.idDistrict}==*{distrito.idDistrict})" />
+                    </select>
+                </div>
+
+				<div class="col-sm-12">
+					<input type="submit" value="Registrar" class="btn btn-dark" />
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+
+</body>
+</html>

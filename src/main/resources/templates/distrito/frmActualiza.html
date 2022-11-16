@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+		<h2 style="color: rgb(0, 0, 0)">Actualizar distrito</h2>
+			<form th:action="@{/pdistricts/update}" method="post" th:object="${di}">
+
+				<div class="col-sm-12">
+
+					<label class="form-label" style="color: rgb(0, 0, 0)"> Id</label> <input type="text"
+						th:field="*{idDistrict}" class="form-control"></input>
+
+				</div>
+
+
+
+				<div class="col-sm-12">
+
+					<label class="form-label" style="color: rgb(0, 0, 0)"> Nombre de distrito:</label> <input
+						type="text" th:field="*{nomDistrict}" class="form-control"  required minlength="3" maxlength="23"></input>
+
+				</div>
+
+				<div class="col-sm-12">
+					<input type="submit" value="Actualizar" class="btn btn-dark"></input>
+				</div>
+
+
+
+			</form>
+
+		</div>
+
+	</div>
+</body>
+</html>

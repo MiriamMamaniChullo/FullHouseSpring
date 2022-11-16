@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Lista Habitación</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+
+		<div>
+		<h2 style="color: #000000">Lista de Habitaciones</h2>
+		<p>*En caso de tener problemas al eliminar la habitación, asegurese que la habitación no tenga avisos registrados<p>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Descripcion</th>
+							<th>Direccion</th>
+							<th>Arrendador</th>
+							<th>Distrito</th>
+							<th>Operacion 1</th>
+							<th>Operacion 2</th>
+						</tr>
+					</thead>
+					<tbody id="habitaciones-list">
+						<tr th:each="ro:${listaHabitacion}">
+							<td th:text="${ro.idRoom}"></td>
+							<td th:text="${ro.descpRoom}"></td>
+							<td th:text="${ro.adress}"></td>
+							<td th:text="${ro.arrendador.nomArrendador}"></td>
+							<td th:text="${ro.distrito.nomDistrict}"></td>
+							<td><a th:href="@{/rrooms/delete?id=}+${ro.idRoom}">
+									Eliminar </a></td>
+
+							<td><a th:href="@{'/rrooms/goupdate/'+${ro.idRoom}}">
+									Actualizar </a></td>
+
+						</tr>
+					</tbody>
+
+				</table>
+
+
+
+			</div>
+
+		</div>
+
+
+
+
+	</div>
+
+
+</body>
+</html>

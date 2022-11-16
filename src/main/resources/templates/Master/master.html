@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="ISO-8859-1">
+<title>FullHouse</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="static/css/style.css" type="text/css"
+	th:href="@{/css/style.css}">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../dist/leaflet.awesome-markers.js"></script>
+</head>
+<body>
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="@{/../../iinicio/inicio"><img
+					alt="" th:src="@{/images/Logo.jpeg}" height="55" width="55">&nbsp&nbsp
+					FullHouse</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+					aria-controls="navbarNavDropdown" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavDropdown">
+					<ul class="navbar-nav">
+					<li class="nav-item dropdown"><a class="nav-link"
+							th:href="@{/iinicio/inicio}" role="button" style="color: #fdfdfd"> Inicio </a></li>
+						<li class="nav-item dropdown"
+							sec:authorize="hasRole('ROLE_ESTUDIANTE') or hasRole('ROLE_ADMIN')"><a
+							class="nav-link" href="#" id="navbarDropdownMenuLink"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: #fdfdfd"> Estudiante </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li sec:authorize="hasRole('ROLE_ESTUDIANTE')" ><a class="dropdown-item" th:href="@{/sstudents/new}">Registrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/sstudents/list}">Listar</a></li>
+							</ul></li>
+						<li class="nav-item dropdown"
+							sec:authorize="hasRole('ROLE_ESTUDIANTE') or hasRole('ROLE_ADMIN')"><a
+							class="nav-link" href="#" id="navbarDropdownMenuLink"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: #fdfdfd"> Inter&eacutes </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li sec:authorize="hasRole('ROLE_ESTUDIANTE')"><a class="dropdown-item" th:href="@{/iinteres/new}">Registrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/iinteres/list}">Listar</a></li>
+							</ul></li>
+						<li class="nav-item dropdown"
+							sec:authorize="hasRole('ROLE_ARRENDADOR') or hasRole('ROLE_ESTUDIANTE') or hasRole('ROLE_ADMIN')" ><a
+							class="nav-link" href="#" id="navbarDropdownMenuLink"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: #fdfdfd"> Habitaci&oacuten </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li sec:authorize="hasRole('ROLE_ARRENDADOR')"><a class="dropdown-item" th:href="@{/rrooms/new}">Registrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/rrooms/list}">Listar</a></li>
+							</ul></li>
+						<li class="nav-item dropdown"
+							sec:authorize="hasRole('ROLE_ARRENDADOR') or hasRole('ROLE_ESTUDIANTE') or hasRole('ROLE_ADMIN')"><a
+							class="nav-link" href="#" id="navbarDropdownMenuLink"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: #fdfdfd"> Aviso </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li sec:authorize="hasRole('ROLE_ARRENDADOR')"><a class="dropdown-item" th:href="@{/aaviso/new}">Registrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/aaviso/list}">Listar</a></li>
+							</ul></li>
+						<li class="nav-item dropdown"
+							sec:authorize="hasRole('ROLE_ARRENDADOR') or hasRole('ROLE_ADMIN')"><a
+							class="nav-link" href="#" id="navbarDropdownMenuLink"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: #fdfdfd"> Arrendador </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li sec:authorize="hasRole('ROLE_ARRENDADOR')"><a class="dropdown-item" th:href="@{/aarrendador/new}">Registrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/aarrendador/list}">Listar</a></li>
+							</ul></li>
+						<li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')"><a
+							class="nav-link" href="#" id="navbarDropdownMenuLink"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: #fdfdfd"> Distrito </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/pdistricts/new}">Registrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/pdistricts/list}">Listar</a></li>
+							</ul></li>
+						<li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')"><a
+							class="nav-link" href="#" id="navbarDropdownMenuLink"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: #fdfdfd"> Universidad </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/university/new}">Registrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/university/list}">Listar</a></li>
+							</ul></li>
+						<li class="nav-item dropdown"
+							sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link"
+							href="#" id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: #fdfdfd"> Usuario </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/usuarios/nuevo}">Registrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/usuarios/listar}">Listar</a></li>
+							</ul></li>
+						<li class="nav-item dropdown"
+							sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link"
+							href="#" id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"
+							style="color: #fdfdfd"> Rol </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/roles/nuevo}">Registrar</a></li>
+								<li><a class="dropdown-item" th:href="@{/roles/listar}">Listar</a></li>
+							</ul></li>
+					</ul>
+					<form th:action="@{/logout}" method="post">
+						<input type="submit" class="btn btn-lg btn-light btn-block"
+							value="Desconectarse"></input>
+					</form>
+
+				</div>
+
+			</div>
+		</nav>
+	</header>
+	<div class="container py4"></div>
+	<footer th:fragment="footer" class="container">
+		<p>Programación en web 2022-1</p>
+	</footer>
+
+</body>
+</html>

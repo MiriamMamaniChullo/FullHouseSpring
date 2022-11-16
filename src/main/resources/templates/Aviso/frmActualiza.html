@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+		<h2 style="color: rgb(0, 0, 0)">Actualizar aviso</h2>
+			<form th:action="@{/aaviso/update}" method="post" th:object="${av}">
+
+				<div class="col-sm-12">
+					<label class="form-label" style="color: rgb(0, 0, 0)">Id:</label> <input type="text"
+						th:field="*{idAviso}" class="form-control"></input>
+				</div>
+
+
+				<div class="col-sm-12">
+						<label class="form-label" style="color: rgb(0, 0, 0)">Precio de Habitacion:</label> <input type="text"
+							th:field="*{preHabitacion}" class="form-control" required minlength="2" maxlength="10"></input>
+					</div>
+					
+					<div class="col-sm-12">
+						<label class="form-label" style="color: rgb(0, 0, 0)">Fecha de publicacion</label> <input type="date"
+							th:field="*{fechaPublicacion}" class="form-control"></input>
+					</div>
+					
+					<div class="col-sm-12">
+						<label class="form-label" style="color: rgb(0, 0, 0)">Habitacion:</label>
+						<select name= "selectRoom" class="form.control" th:field="*{room.idRoom}">
+						<option th:each="r: ${listaHabitacion}" th:value="${r.idRoom}" th:text="${r.descpRoom}"
+						th:selected="(${r.idRoom}==*{room.idRoom})"></option>
+						</select>
+					</div>
+
+				<div class="col-sm-12">
+					<input type="submit" value="Actualizar" class="btn btn-dark"></input>
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+
+</body>
+</html>

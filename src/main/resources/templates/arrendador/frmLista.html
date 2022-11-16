@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleag.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+		<h2 style="color: rgb(0, 0, 0)">Lista de Arrendadores</h2>
+		<p>*En caso de tener problemas al eliminar el arrendador, asegurese que el arrendador no tenga habitaciones registradas<p>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nombre del Arrendador</th>
+							<th>DNI del Arrendador</th>
+							<th>Edad del Arrendador</th>
+							<th>Celular del Arrendador</th>
+							<th>Email del Arrendador</th>
+							<th>Username</th>
+							<th>Password</th>
+							<th>Operacion</th>
+							<th>Operacion</th>
+						</tr>
+					</thead>
+					<tbody id="arrendadores-list">
+						<tr th:each="ar:${listaArrendadores}">
+							<td th:text="${ar.idArrendador}"></td>
+							<td th:text="${ar.nomArrendador}"></td>
+							<td th:text="${ar.dniArrendador}"></td>
+							<td th:text="${ar.edadArrendador}"></td>
+							<td th:text="${ar.celArrendador}"></td>
+							<td th:text="${ar.emailArrendador}"></td>
+							<td th:text="${ar.username}"></td>
+							<td th:text="${ar.password}"></td>
+
+							<td><a
+								th:href="@{/aarrendador/delete?id=}+${ar.idArrendador}">
+									Eliminar </a></td>
+							<td><a
+								th:href="@{'/aarrendador/goupdate/'+${ar.idArrendador}}">
+									Actualizar </a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
